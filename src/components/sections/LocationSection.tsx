@@ -6,20 +6,11 @@ import {
   CardBottomSection,
 } from '@/components/ui/card';
 import { MapPin } from 'lucide-react';
-
 interface LocationSectionProps {
-  title?: string;
-  subtitle?: string;
-  locationName?: string;
-  locationAddress?: string;
   onLocationClick?: () => void;
 }
 
 export default function LocationSection({
-  title = 'GET STARTED',
-  subtitle = 'ORDER NOW!',
-  locationName = 'Ruko Mulyosari Surabaya',
-  locationAddress = 'Ruko Mulyosari Surabaya, Jl Mulyosari No 76G Kec....',
   onLocationClick,
 }: LocationSectionProps) {
   return (
@@ -27,16 +18,18 @@ export default function LocationSection({
       <CardDualSection className='shadow-lg'>
         <CardTopSection className='border-b-2 border-gray-400'>
           <h3 className='font-bold text-lg italic text-brand p-4'>
-            {title}, <span className='font-extrabold'>{subtitle}</span>
+            GET STARTED, <span className='font-extrabold'>ORDER NOW!</span>
           </h3>
         </CardTopSection>
         <CardBottomSection>
           <div className='flex items-center justify-between p-4'>
             <div className='flex-1'>
               <h3 className='font-semibold text-lg text-gray-900'>
-                {locationName}
+                Ruko Mulyosari Surabaya
               </h3>
-              <p className='text-gray-600 text-sm'>{locationAddress}</p>
+              <p className='text-gray-600 text-sm'>
+                Ruko Mulyosari Surabaya, Jl Mulyosari No 76G Kec....
+              </p>
             </div>
             <div className='ml-4'>
               <button

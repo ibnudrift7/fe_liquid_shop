@@ -23,7 +23,7 @@ export default function LocationSection({
   onLocationClick,
 }: LocationSectionProps) {
   return (
-    <div className='mx-4 mt-8 mb-6'>
+    <div className='mx-4'>
       <CardDualSection className='shadow-lg'>
         <CardTopSection className='border-b-2 border-gray-400'>
           <h3 className='font-bold text-lg italic text-brand p-4'>

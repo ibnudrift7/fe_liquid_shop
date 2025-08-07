@@ -17,7 +17,7 @@ export default function ChatAdminSection({
   onChatClick,
 }: ChatAdminSectionProps) {
   return (
-    <section className='p-4'>
+    <section className='px-4'>
       <div className='text-start font-bold text-gray-700 mb-4'>{title}</div>
       <Card
         className='cursor-pointer hover:shadow-md transition-shadow'

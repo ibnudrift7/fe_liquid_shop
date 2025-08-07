@@ -36,7 +36,7 @@ export default function VoucherBanner1Section({
           />
         </CardVoucherLeft>
 
-        <CardVoucherRight className='p-2 sm:p-3 md:p-4 pl-4 sm:pl-6 md:pl-8'>
+        <CardVoucherRight className='sm:p-3 md:p-4 pl-4 sm:pl-6 md:pl-8'>
           <div className='grid grid-cols-3 items-center h-full w-full gap-2 sm:gap-4'>
             <div className='col-span-2 flex flex-col justify-center'>
               <p className='font-bold text-sm sm:text-base md:text-lg text-gray-900 leading-tight'>

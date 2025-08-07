@@ -117,7 +117,10 @@ function CardVoucher({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot='card-voucher'
-      className={cn('rounded-2xl overflow-hidden shadow-lg flex', className)}
+      className={cn(
+        'bg-white rounded-2xl overflow-hidden shadow-lg flex',
+        className,
+      )}
       {...props}
     />
   );

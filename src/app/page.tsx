@@ -83,13 +83,7 @@ export default function Home() {
         />
 
         <div className='absolute bottom-0 left-0 right-0 transform translate-y-3/4 z-1'>
-          <LocationSection
-            title='GET STARTED'
-            subtitle='ORDER NOW!'
-            locationName='Ruko Mulyosari Surabaya'
-            locationAddress='Ruko Mulyosari Surabaya, Jl Mulyosari No 76G Kec....'
-            onLocationClick={handleLocationClick}
-          />
+          <LocationSection onLocationClick={handleLocationClick} />
         </div>
       </div>
 

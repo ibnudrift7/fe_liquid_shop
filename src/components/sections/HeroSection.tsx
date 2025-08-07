@@ -20,7 +20,7 @@ export default function HeroSection({
   onCartClick,
 }: HeroSectionProps) {
   return (
-    <div className='relative mb-6'>
+    <div className='relative'>
       <div className='relative aspect-[16/9] overflow-hidden'>
         <Image
           src='/assets/Background.png'

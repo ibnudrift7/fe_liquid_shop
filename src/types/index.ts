@@ -1,3 +1,5 @@
+import { LucideIcon } from 'lucide-react';
+
 export interface Category {
   id: string;
   name: string;
@@ -24,7 +26,7 @@ export interface Product {
 }
 
 export interface NavigationTab {
-  icon: string;
+  icon: LucideIcon;
   label: string;
   badge?: string;
   id: string;

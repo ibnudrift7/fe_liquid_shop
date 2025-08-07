@@ -26,13 +26,13 @@ export default function OfficialMerchandiseSection({
           <div className='grid grid-cols-4 items-center gap-4'>
             <div className='flex justify-center'>
               <div className='relative'>
-                <div className='w-15 h-15 bg-brand rounded-full flex items-center justify-center'>
+                <div className='w-15 h-15 md:w-18 md:h-18 bg-brand rounded-full flex items-center justify-center'>
                   <Image
-                    src={imageSrc}
-                    alt='Official Merchandise'
-                    width={70}
-                    height={70}
-                    className='object-contain'
+                  src={imageSrc}
+                  alt='Official Merchandise'
+                  width={70}
+                  height={70}
+                  className='object-contain'
                   />
                 </div>
               </div>

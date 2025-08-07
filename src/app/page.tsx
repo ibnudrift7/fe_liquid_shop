@@ -1,103 +1,168 @@
-import Image from "next/image";
+'use client';
+
+import {
+  HeroSection,
+  LocationSection,
+  CategoryGridSection,
+  VoucherBanner1Section,
+  VoucherBanner2Section,
+  SpecialTodaySection,
+  OfficialMerchandiseSection,
+  ProductSection,
+  ChatAdminSection,
+  FooterNavigationSection,
+  PromoSection,
+} from '@/components/sections';
+import { toast } from 'sonner';
+import { Category, SpecialProduct, Product, NavigationTab } from '@/types';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [isLoading, setIsLoading] = useState(true);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleSearch = (value: string) => {
+    console.log('Search:', value);
+    // TODO: Implement search functionality
+  };
+
+  const handleCartClick = () => {
+    toast('Cart clicked', {
+      description: 'You have 25 items in your cart.',
+      action: {
+        label: 'View Cart',
+        onClick: () => console.log('View Cart'),
+      },
+    });
+  };
+
+  const handleLocationClick = () => {
+    toast('Location clicked', {
+      description: 'You can change your delivery location here.',
+      action: {
+        label: 'Change Location',
+        onClick: () => console.log('Change Location'),
+      },
+    });
+  };
+
+  const handleCategoryClick = (category: Category) => {
+    toast(`Category clicked: ${category.name}`);
+  };
+
+  const handleVoucherClaim = () => {
+    toast('Voucher claimed successfully!', {
+      description: 'You can use this voucher at checkout.',
+      action: {
+        label: 'View Vouchers',
+        onClick: () => console.log('View Vouchers'),
+      },
+    });
+  };
+
+  const handleProductClick = (product: Product | SpecialProduct) => {
+    toast(`Product clicked: ${product.name}`, {
+      description: `Price: ${product.price || product.discountPrice} IDR`,
+      action: {
+        label: 'View Product',
+        onClick: () => console.log('View Product'),
+      },
+    });
+  };
+
+  const handleOrderClick = () => {
+    toast('Order placed successfully!', {
+      description: 'Your order will be processed shortly.',
+      action: {
+        label: 'View Orders',
+        onClick: () => console.log('View Orders'),
+      },
+    });
+  };
+
+  const handleChatClick = () => {
+    toast('Chat with admin initiated', {
+      description: 'You can now chat with our support team.',
+      action: {
+        label: 'Start Chat',
+        onClick: () => console.log('Start Chat'),
+      },
+    });
+  };
+
+  const handleTabClick = (tab: NavigationTab) => {
+    toast(`Tab clicked: ${tab.label}`, {
+      description: `You are now on the ${tab.label} tab.`,
+      action: {
+        label: 'Go to Tab',
+        onClick: () => console.log(`Go to ${tab.label} tab`),
+      },
+    });
+  };
+
+  return (
+    <div className='min-h-screen bg-gray-50 mx-auto max-w-[720px] border-x border-gray-200'>
+      <div className='relative'>
+        <HeroSection
+          searchPlaceholder='Makna V4'
+          cartCount={25}
+          onSearch={handleSearch}
+          onCartClick={handleCartClick}
+        />
+
+        <div className='absolute bottom-0 left-0 right-0 transform translate-y-3/4 z-1'>
+          <LocationSection onLocationClick={handleLocationClick} />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      <div className='pt-45'>
+        <CategoryGridSection
+          isLoading={isLoading}
+          onCategoryClick={handleCategoryClick}
+        />
+      </div>
+
+      <VoucherBanner1Section
+        title='Voucher buy 1 get 1 special'
+        subtitle='UNIONLABS WEBSITE USER.'
+        onClaim={handleVoucherClaim}
+      />
+
+      <VoucherBanner2Section
+        title1='Mau Voucher'
+        title2='Diskon 10RB?'
+        description='Gabung & Ambil Vouchernya Sekarang juga!'
+        onClaim={handleVoucherClaim}
+      />
+
+      <SpecialTodaySection
+        isLoading={isLoading}
+        onProductClick={handleProductClick}
+      />
+
+      <OfficialMerchandiseSection onOrderClick={handleOrderClick} />
+
+      <ProductSection
+        isLoading={isLoading}
+        onProductClick={handleProductClick}
+      />
+
+      <PromoSection />
+
+      <ChatAdminSection
+        chatTitle='Buat User MAKNA (Chat Only)'
+        phoneNumber='+62 xxx xxx xxx'
+        onChatClick={handleChatClick}
+      />
+
+      <FooterNavigationSection activeTab='home' onTabClick={handleTabClick} />
     </div>
   );
 }

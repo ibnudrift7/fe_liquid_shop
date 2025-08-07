@@ -40,7 +40,7 @@ const defaultProducts: Product[] = [
     price: 75000,
     rating: 5.0,
     sold: 500,
-    isNew: true,
+    isNew: false,
   },
   {
     id: '4',
@@ -49,7 +49,7 @@ const defaultProducts: Product[] = [
     price: 75000,
     rating: 5.0,
     sold: 500,
-    isNew: true,
+    isNew: false,
   },
   {
     id: '5',
@@ -58,7 +58,7 @@ const defaultProducts: Product[] = [
     price: 75000,
     rating: 5.0,
     sold: 500,
-    isNew: true,
+    isNew: false,
   },
   {
     id: '6',
@@ -67,7 +67,7 @@ const defaultProducts: Product[] = [
     price: 75000,
     rating: 5.0,
     sold: 500,
-    isNew: true,
+    isNew: false,
   },
 ];
 

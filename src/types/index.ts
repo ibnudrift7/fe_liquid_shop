@@ -13,6 +13,7 @@ export interface SpecialProduct {
   originalPrice: number;
   discountPrice: number;
   image?: string;
+  price?: number;
 }
 
 export interface Product {
@@ -23,6 +24,7 @@ export interface Product {
   sold: number;
   image?: string;
   isNew?: boolean;
+  discountPrice?: number;
 }
 
 export interface NavigationTab {

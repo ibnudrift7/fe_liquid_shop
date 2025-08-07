@@ -13,6 +13,7 @@ import {
   FooterNavigationSection,
   PromoSection,
 } from '@/components/sections';
+import { toast } from 'sonner';
 import { Category, SpecialProduct, Product, NavigationTab } from '@/types';
 import { useState, useEffect } from 'react';
 
@@ -33,43 +34,77 @@ export default function Home() {
   };
 
   const handleCartClick = () => {
-    console.log('Cart clicked');
-    // TODO: Navigate to cart page
+    toast('Cart clicked', {
+      description: 'You have 25 items in your cart.',
+      action: {
+        label: 'View Cart',
+        onClick: () => console.log('View Cart'),
+      },
+    });
   };
 
   const handleLocationClick = () => {
-    console.log('Location clicked');
-    // TODO: Open location picker or navigate to map
+    toast('Location clicked', {
+      description: 'You can change your delivery location here.',
+      action: {
+        label: 'Change Location',
+        onClick: () => console.log('Change Location'),
+      },
+    });
   };
 
   const handleCategoryClick = (category: Category) => {
-    console.log('Category clicked:', category);
-    // TODO: Navigate to category page
+    toast(`Category clicked: ${category.name}`);
   };
 
   const handleVoucherClaim = () => {
-    console.log('Voucher claimed');
-    // TODO: Implement voucher claim logic
+    toast('Voucher claimed successfully!', {
+      description: 'You can use this voucher at checkout.',
+      action: {
+        label: 'View Vouchers',
+        onClick: () => console.log('View Vouchers'),
+      },
+    });
   };
 
   const handleProductClick = (product: Product | SpecialProduct) => {
-    console.log('Product clicked:', product);
-    // TODO: Navigate to product detail page
+    toast(`Product clicked: ${product.name}`, {
+      description: `Price: ${product.price || product.discountPrice} IDR`,
+      action: {
+        label: 'View Product',
+        onClick: () => console.log('View Product'),
+      },
+    });
   };
 
   const handleOrderClick = () => {
-    console.log('Order clicked');
-    // TODO: Navigate to order page
+    toast('Order placed successfully!', {
+      description: 'Your order will be processed shortly.',
+      action: {
+        label: 'View Orders',
+        onClick: () => console.log('View Orders'),
+      },
+    });
   };
 
   const handleChatClick = () => {
-    console.log('Chat clicked');
-    // TODO: Open WhatsApp chat
+    toast('Chat with admin initiated', {
+      description: 'You can now chat with our support team.',
+      action: {
+        label: 'Start Chat',
+        onClick: () => console.log('Start Chat'),
+      },
+    });
   };
 
   const handleTabClick = (tab: NavigationTab) => {
-    console.log('Tab clicked:', tab);
-    // TODO: Navigate to respective page
+    toast(`Tab clicked: ${tab.label}`, {
+      description: `You are now on the ${tab.label} tab.`,
+      action: {
+        label: 'Go to Tab',
+        onClick: () => console.log(`Go to ${tab.label} tab`),
+      },
+    });
   };
 
   return (

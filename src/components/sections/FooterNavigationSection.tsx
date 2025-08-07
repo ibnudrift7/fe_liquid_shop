@@ -2,53 +2,52 @@
 
 import { Badge } from '@/components/ui/badge';
 import { NavigationTab } from '@/types';
+import { Home, ShoppingBag, Gift, User, LogOut } from 'lucide-react';
 
 interface FooterNavigationSectionProps {
-  title?: string;
   tabs?: NavigationTab[];
   activeTab?: string;
   onTabClick?: (tab: NavigationTab) => void;
 }
 
 const defaultTabs: NavigationTab[] = [
-  { id: 'home', icon: '🏠', label: 'Home' },
-  { id: 'shop', icon: '🛍️', label: 'Shop', badge: '3' },
-  { id: 'promo', icon: '🎁', label: 'Promo', badge: '2' },
-  { id: 'profile', icon: '👤', label: 'Saya' },
-  { id: 'logout', icon: '🚪', label: 'Logout' },
+  { id: 'home', icon: Home, label: 'Home' },
+  { id: 'shop', icon: ShoppingBag, label: 'Shop', badge: '3' },
+  { id: 'promo', icon: Gift, label: 'Promo', badge: '2' },
+  { id: 'profile', icon: User, label: 'Saya' },
+  { id: 'logout', icon: LogOut, label: 'Logout' },
 ];
 
 export default function FooterNavigationSection({
-  title = 'FOOTER NAVIGATION SECTION',
   tabs = defaultTabs,
   activeTab = 'home',
   onTabClick,
 }: FooterNavigationSectionProps) {
   return (
-    <footer className='bg-white border-t sticky bottom-0 p-4'>
-      <div className='text-center text-sm font-semibold text-gray-700 mb-4'>
-        {title}
-      </div>
+    <footer className='bg-white border-t sticky bottom-0 p-4 z-2'>
       <div className='flex justify-around'>
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => onTabClick?.(tab)}
-            className={`flex flex-col items-center space-y-1 relative transition-colors ${
-              activeTab === tab.id ? 'text-brand' : 'text-gray-600'
-            }`}
-          >
-            <div className='relative'>
-              <span className='text-xl'>{tab.icon}</span>
-              {tab.badge && (
-                <Badge className='absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center p-0'>
-                  {tab.badge}
-                </Badge>
-              )}
-            </div>
-            <span className='text-xs'>{tab.label}</span>
-          </button>
-        ))}
+        {tabs.map((tab) => {
+          const IconComponent = tab.icon;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => onTabClick?.(tab)}
+              className={`flex flex-col items-center space-y-1 relative transition-colors ${
+                activeTab === tab.id ? 'text-brand' : 'text-gray-600'
+              }`}
+            >
+              <div className='relative'>
+                <IconComponent className='w-6 h-6' />
+                {tab.badge && (
+                  <Badge className='absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center p-0'>
+                    {tab.badge}
+                  </Badge>
+                )}
+              </div>
+              <span className='text-xs'>{tab.label}</span>
+            </button>
+          );
+        })}
       </div>
     </footer>
   );
